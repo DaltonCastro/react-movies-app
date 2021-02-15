@@ -5,15 +5,14 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const path = require('path');
 
-const distPath = path.resolve(__dirname, 'dist');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: path.resolve(__dirname, './src/index.js')
   },
   output: {
-    path: distPath,
+    path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
   },
   devtool: 'source-map',
@@ -47,6 +46,10 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
   ],
   optimization: {
     minimize: true,
