@@ -31,11 +31,12 @@ module.exports = {
       },
       {
         // Apply rule for .css files
-        test: /\.css$/,
+        test: /\.css$/i,
         // Set loaders to transform files.
         use: [
           'style-loader',
           'css-loader',
+          'postcss-loader'
         ]
       },
     ]
@@ -46,10 +47,6 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
   ],
   optimization: {
     minimize: true,
