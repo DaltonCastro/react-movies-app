@@ -9,7 +9,8 @@
   "scripts": {
     "dev-g": "webpack serve --mode development --open 'Google Chrome'",
     "dev": "webpack serve --mode development",
-    "build": "webpack --progress --mode production"
+    "build": "webpack --progress --mode production",
+    "start": "webpack serve"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.16",
