@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     path: distPath,
-    filename: '[name].js',
+    filename: 'main.js',
   },
   devtool: 'source-map',
   module: {
