@@ -9,8 +9,7 @@
   "scripts": {
     "dev-g": "webpack serve --mode development --open 'Google Chrome'",
     "dev": "webpack serve --mode development",
-    "build": "NODE_ENV=production npx tailwindcss-cli@latest -S build ./src/assets/styles/styles.css -o ./dist/styles.css && webpack --mode production",
-    "start": "node server.js"
+    "build": "NODE_ENV=production npx tailwindcss-cli@latest -S tailwind build ./src/assets/styles/styles.css -o ./dist/styles.css && webpack --mode production"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.16",
@@ -54,6 +53,7 @@
     "express": "^4.17.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
+    "postcss": "^8.2.6",
     "postcss-loader": "^5.0.0",
     "postcss-preset-env": "^6.7.0",
     "react": "^17.0.1",

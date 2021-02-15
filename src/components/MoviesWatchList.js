@@ -14,8 +14,7 @@ const MoviesWatchList = () => {
 
   const renderWatchListItem = () => {
     const { watchList } = movies;
-    console.log(movies);
-
+ 
     return watchList && watchList.map((item) => {
       const isFavorite = !!(movies.favorites && movies.favorites.find((el) => el.id === item.id));
       const isWatchList = !!(movies.watchList && movies.watchList.find((el) => el.id === item.id));

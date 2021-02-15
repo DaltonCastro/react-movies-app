@@ -82,7 +82,8 @@ export const getAccountDetails = () => {
 };
 
 export const getFavoriteMovies = () => async (dispatch) => {
-  Axios.get(`${API}/account/${ACCOUNT_ID}/favorite/movies?${API_KEY}&session_id=${SESSION_ID}`)
+  const getFavoriteURL = `${API}/account/${ACCOUNT_ID}/favorite/movies?${API_KEY}&session_id=${SESSION_ID}`;
+  Axios.get(getFavoriteURL)
     .then(({ data }) => {
       dispatch({
         type: Types.FETCH_FAVORITES,
@@ -141,9 +142,7 @@ export const getWatchList = () => async (dispatch) => {
 // };
 
 export const getMovieTrailer = (movieId) => () => Axios.get(`${API}/${ENDPOINTS.movie}/${movieId}/videos?${API_KEY}`)
-  .then(({ data }) => {
-    return data.results;
-  })
+  .then(({ data }) => data.results)
   .catch((e) => {
     console.log(e);
   });
