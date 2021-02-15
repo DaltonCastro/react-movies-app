@@ -10,7 +10,7 @@
     "dev-g": "webpack serve --mode development --open 'Google Chrome'",
     "dev": "webpack serve --mode development",
     "build": "webpack --progress --mode production",
-    "start": "webpack serve"
+    "start": "node server.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.16",
@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "axios": "0.21.1",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "postcss-preset-env": "^6.7.0",
