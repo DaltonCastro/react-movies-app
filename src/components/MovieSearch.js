@@ -14,7 +14,9 @@ const MovieSearch = () => {
   return (
     <div className='flex flex-row items-center justify-center py-5'>
       {/* <h3 className='text-xl mr-2'>Find a movie: </h3> */}
-      <input autoCorrect='off'
+      <input
+        data-testid='search-bar'
+        autoCorrect='off'
         placeholder='Find your movie :)'
         className='border text-center rounded-lg text-grey-darkest placeholder-gray-400 leading-normal w-64 p-4'
         onChange={onChangelHandler}

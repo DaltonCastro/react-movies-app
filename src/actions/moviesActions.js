@@ -33,7 +33,7 @@ export const createSession = () => (dispatch) => {
       });
     })
     .catch((e) => {
-      console.log({ ...e });
+      // console.log({ ...e });
       dispatch({ type: Types.CREATE_SESSION_ERROR, payload: e });
     });
 };
@@ -61,7 +61,7 @@ export const setFavoriteMovie = (id, favorite) => (dispatch) => {
   const config = {
     'Content-Type': 'application/json;charset=utf-8'
   };
-  console.log(ACCOUNT_ID);
+  // console.log(ACCOUNT_ID);
   Axios.post(`${API}/account/10104906/favorite?${API_KEY}&session_id=${SESSION_ID}`, data, config)
     .then(({ data: dt }) => {
       dispatch({
@@ -144,5 +144,5 @@ export const getWatchList = () => async (dispatch) => {
 export const getMovieTrailer = (movieId) => () => Axios.get(`${API}/${ENDPOINTS.movie}/${movieId}/videos?${API_KEY}`)
   .then(({ data }) => data.results)
   .catch((e) => {
-    console.log(e);
+    // console.log(e);
   });

@@ -38,20 +38,20 @@ const MovieItem = (item) => {
     dispatch(getMovieTrailer(item.id))
       .then((data) => {
         // console.log(data);
-        setVideoURL(data[0]?.key && `http://www.youtube.com/embed/${data[0].key}`);
+        setVideoURL(data && data[0]?.key && `http://www.youtube.com/embed/${data[0].key}`);
       });
   }, []);
 
   return (
-    <div className='flex-1 flex-col bg-gray-100'>
+    <div data-testid='movie-item' className='flex-1 flex-col bg-gray-600'>
       {/* Movie Content */}
-      <div className='flex-1 flex-col sm:flex-row h-auto m-4 rounded bg-gradient-to-r from-blue-800 via-blue-800 to-blue-900'>
+      <div className='flex-1 flex-col sm:flex-row h-auto m-4 rounded-md bg-gray-700'>
         {/* Title / Release Date */}
         <div className='flex flex-col divide-y-2 divide-yellow-500'>
           <div className='justify-center items-center text-center py-4 mx-2 h-20'>
             <span className='text-gray-200 items-center text-base text-center'>{item.title}</span>
           </div>
-          <div className='text-yellow-500 text-center text-sm'>
+          <div className='text-yellow-500 text-center text-sm py-1'>
             <span className='font-bold'>Release Date</span>
             <span className='mx-2'>{moment(item.release_date).format('DD/MM/YYYY')}</span>
           </div>
@@ -61,18 +61,20 @@ const MovieItem = (item) => {
           <div className='flex justify-center py-2'>
             {/* Favorite Button */}
             <button
-              className='flex flex-row w-36 items-center justify-center border border-indigo-500 bg-indigo-700 text-white rounded-md py-2 px-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline'
+              data-testid='movie-add-fav'
+              className='flex flex-row w-36 items-center justify-center border border-indigo-500 bg-blue-400 text-white rounded-md py-2 px-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline'
               type='button'
               onClick={onFavoriteHandler}>
-              { item.isFavorite ? (<ImStarFull />) : (<ImStarEmpty />)}
+              { item.isFavorite ? (<ImStarFull data-testid='star-full' />) : (<ImStarEmpty data-testid='star-empty' />)}
               <span className='text-sm ml-1'>Save as Favorite</span>
             </button>
             {/* WatchList Button */}
             <button
-              className='flex flex-row w-36 items-center justify-center border border-indigo-500 bg-indigo-500 ml-4 text-white rounded-md py-2 px-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline'
+              data-testid='movie-add-watch'
+              className='flex flex-row w-36 items-center justify-center border border-indigo-500 bg-blue-400 ml-4 text-white rounded-md py-2 px-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline'
               type='button'
               onClick={onWatchListHandler}>
-              { item.isWatchList ? (<ImMinus />) : (<ImPlus />)}
+              { item.isWatchList ? (<ImMinus data-testid='minus-watch' />) : (<ImPlus data-testid='plus-watch' />)}
               {/* <span className='text-sm ml-1'>{`${item.isWatchList ? 'Remove from' : 'Add to'} to Watch List`}</span> */}
               <span className='text-sm ml-1'>
                 {`${item.isWatchList ? 'From' : 'To'} Watch List`}
@@ -85,7 +87,7 @@ const MovieItem = (item) => {
               <img alt='' src={renderPoster} className='rounded text-center p-4' />
             </div>
             {/* Overview */}
-            <p className='flex-1 text-gray-200 text-sm my-2 h-72 text-justify'>{item.overview || 'No overview added...=('}</p>
+            <p className='text-gray-200 text-sm my-2 h-48 text-justify overflow-y-auto'>{item.overview || 'No overview added...=('}</p>
           </div>
           {/* <div className='flex flex-row justify-between'>
             { renderImages() }
@@ -97,8 +99,13 @@ const MovieItem = (item) => {
           <span className='text-blue-200 ml-2'>{item.vote_average}</span>
         </div>
         <div className='flex flex-col justify-center items-center pb-4'>
-          <h3 className='text-gray-200 text-sm py-2'>{videoURL ? 'Watch the Trailer!' : 'No trailer...'}</h3>
-          <iframe allowFullScreen='allowfullscreen' width='320' height='200' id='ytplayer' type='text/html' src={videoURL} frameBorder='0' />
+          <h3 className='text-gray-200 text-sm py-2'>{
+          videoURL ? 
+          <a href={videoURL} target='_blank'><span className='text-yellow-600'>Watch the Trailer!</span></a> 
+          : 'No trailer...'
+          }
+          </h3>
+          {/* <iframe allowFullScreen='allowfullscreen' width='320' height='200' id='ytplayer' type='text/html' src={videoURL} frameBorder='0' /> */}
         </div>
       </div>
       <div />

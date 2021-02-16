@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import MoviesWatchList from './MoviesWatchList';
 import MoviesList from './MoviesList';
 import MovieSearch from './MovieSearch';
+import Header from './Header';
 import { getWatchList } from '../actions/moviesActions';
-import { RiMovieFill } from 'react-icons/ri';
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
@@ -32,11 +32,8 @@ const MoviesContainer = () => {
   }, []);
 
   return (
-    <div className='flex-1 flex-row h-full w-full md:mx-auto bg-gray-100'>
-      <div className='flex flex-row justify-center items-center py-3 bg-gradient-to-r from-yellow-400 via-yellow-400 to-yellow-500'>
-        <RiMovieFill style={{ color: 'white' }} />
-        <span className='text-white text-sm md:text-lg text-center font-medium ml-2'>THE FAVORITE MOVIES</span>
-      </div>
+    <div className='flex-1 flex-row h-full w-full md:mx-auto bg-gray-600'>
+      <Header />
       <div className='flex flex-col'>
         <MoviesWatchList />
         <MovieSearch />

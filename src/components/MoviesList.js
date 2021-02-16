@@ -16,12 +16,10 @@ const MoviesList = () => {
   }, []);
 
   useEffect(() => {
-    console.log('MoviesList favorite');
     dispatch(getFavoriteMovies());
   }, [movies.isFavorite]);
 
   useEffect(() => {
-    console.log('MoviesList watchList');
     dispatch(getWatchList());
   }, [movies.isWatchList]);
 
@@ -35,7 +33,7 @@ const MoviesList = () => {
   };
 
   return (
-    <div className='flex flex-row flex-wrap'>
+    <div data-testid='movies-list' className='flex flex-row flex-wrap'>
       { renderMovies() }
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 
 function App({ children }) {
   return (
-    <main>
+    <main data-testid='main'>
       { children }
     </main>
 
