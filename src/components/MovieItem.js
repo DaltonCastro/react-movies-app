@@ -83,8 +83,8 @@ const MovieItem = (item) => {
           </div>
           <div className='flex-1 flex-col justify-start'>
             {/* Movie Poster */}
-            <div className='flex bg-gray-900 bg-opacity-30 rounded justify-center h-72'>
-              <img alt='' src={renderPoster} className='rounded text-center p-4' />
+            <div className='flex bg-gray-900 bg-opacity-30 rounded justify-center md:h-72 h-auto p-4'>
+              <img alt='' src={renderPoster} className='rounded md:w-2/3 w-auto' />
             </div>
             {/* Overview */}
             <p className='text-gray-200 text-sm my-2 h-48 text-justify overflow-y-auto'>{item.overview || 'No overview added...=('}</p>
